@@ -13,7 +13,20 @@ import subscriptionRoutes from "./routes/subscription.routes.js";
 dotenv.config();
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://sharebite-frontend.vercel.app",
+    "https://sharebite-frontend-git-main-kalyans-projects-2ba35844.vercel.app",
+    "https://sharebite-frontend-n6fuxovo9-kalyans-projects-2ba35844.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  credentials: true
+}));
+
+
 app.use(express.json());
 
 connectDB();
